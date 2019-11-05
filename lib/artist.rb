@@ -21,8 +21,9 @@ class Artist
     Song.all.select{|song|song.artist == self}
   end
   
-  def song_count
-    song.all.count {|song| song.artist == self}
+  def self.song_count
+    song_count = self.artists.collect{|artist|artist.songs}
+    song_count.flatten.count
   end
   
 end
